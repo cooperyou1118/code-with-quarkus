@@ -5,7 +5,7 @@
 ## 2, 3주차 수업 내용
 실습 1 : 쿼크스 환경 구축 및 준비 완료!
 실습 2 : HTML 기본 및 LOL 메인 화면 개발 완료!
-<div align="center">
+<div align ="center">22
 <img src="screenshots/2026-01-26 오전 9_51_43.png" width="45%" alt="실습 1 화면">
 <img src="screenshots/파일명.png" width="45%" alt="실습 2 화면">
 </div>
