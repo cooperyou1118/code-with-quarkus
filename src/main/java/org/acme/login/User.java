@@ -31,6 +31,7 @@ public class User extends PanacheEntity {
     public String email;
 
     public String phone; // 연락처
+    public Object profileImage;
 
     // 아이디로 조회
     public static User findByUsername(String username) {

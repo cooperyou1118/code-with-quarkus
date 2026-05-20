@@ -12,6 +12,25 @@ import io.vertx.ext.web.RoutingContext;
 @Path("/") // 기본 경로가 최상위 /
 public class AuthResource {
 
+// GET / → 세션 유무에 따라 메인 페이지 분기
+@GET
+@Produces(MediaType.TEXT_HTML)
+public Response mainPage() {
+    String loginUser = context.session().get("loginUser");
+
+    System.out.println("=== [GET /] 세션 ID : " +
+context.session().id());
+    System.out.println("=== [GET /] loginUser : " + loginUser);
+
+    String htmlPath = (loginUser != null)
+        ? "META-INF/resources/login/main_after_login.html"
+        : "META-INF/resources/main_index.html";
+
+    InputStream html =
+getClass().getClassLoader().getResourceAsStream(htmlPath);
+    return Response.ok(html).build();
+}
+
      // GET /login → 로그인 HTML 페이지 반환
         @GET
         @Path("/login") // 경로 명시
@@ -105,6 +124,83 @@ InputStream html = getClass()
 "META-INF/resources/login/register.html");
 return Response.ok(html).build();
 }
+
+@POST
+@Path("/register_check")
+@Transactional
+@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+@Produces(MediaType.TEXT_HTML)
+public Response registerCheck(
+    @FormParam("username") String username,
+    @FormParam("password") String password, // SHA-256 해시값
+    @FormParam("email") String email,
+    @FormParam("phone") String phone) {
+
+    // ① 아이디 중복 체크
+    if (User.findByUsername(username) != null) {
+        return Response
+            .seeOther(URI.create("/register?error=duplicate_username"))
+            .build();
+    }
+
+// ② 이메일 중복 체크
+    if (User.findByEmail(email) != null) {
+        return Response
+            .seeOther(URI.create("/register?error=duplicate_email"))
+            .build();
+    }
+    // ③ DB 삽입
+    User newUser = new User();
+    newUser.username = username;
+    newUser.password = password; // 해시값 저장
+    newUser.email = email;
+    newUser.phone = phone;
+    newUser.persist();
+
+    // ④ 가입 완료 페이지로 이동
+    return Response
+        .seeOther(URI.create("/register_success"))
+        .build();
+}
+
+@GET
+@Path("/register_success")
+@Produces(MediaType.TEXT_HTML)
+public Response registerSuccess() {
+    InputStream html = getClass()
+        .getClassLoader()
+        .getResourceAsStream(
+            "META-INF/resources/login/register_success.html");
+    return Response.ok(html).build();
+}
+
+
+@GET
+@Path("/profile")
+@Produces(MediaType.TEXT_HTML)
+public Response profilePage() {
+// ① 세션 체크 (로그인 안 한 사용자 차단)
+String loginUser = context.session().get("loginUser");
+if (loginUser == null) {
+return Response
+.seeOther(URI.create("/login"))
+.build();
+}
+// ② DB에서 사용자 정보 조회
+User user = User.findByUsername(loginUser);
+// ③ 세션에 사용자 정보 저장 (HTML에서 활용)
+context.session().put("userEmail", user.email);
+context.session().put("userPhone", user.phone);
+context.session().put("profileImage",
+user.profileImage != null ? user.profileImage : "default.png");
+// ④ 프로필 페이지 반환
+InputStream html = getClass()
+.getClassLoader()
+.getResourceAsStream(
+"META-INF/resources/login/profile.html");
+return Response.ok(html).build();
+}
+
 }
 
 
