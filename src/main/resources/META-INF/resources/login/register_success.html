@@ -3,152 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>League of Legends - 메인 페이지</title>
-    <!-- Bootstrap 5 CDN -->
+    <title>League of Legends - 회원가입 완료</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/main.css">
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/test2.js"></script>
-    <script src="js/test.js"></script>
-    <script src="js/toggle.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> 
 
-    
+    <script src="/js/test2.js"></script>
+    <script src="/js/toggle.js"></script>
+
     <script>
-        window.onload = function() {
-            alert("메인 페이지 로딩 완료");
-        }
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof showToast === 'function') {
+                showToast("회원가입이 완료되었습니다!");
+            } else {
+                console.error("showToast 함수를 찾을 수 없습니다.");
+            }
+        });
     </script>
-
 </head>
 <body>
 
-    <!-- 헤더 (Navbar) -->
-    <!-- <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">리그 오브 레전드</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <img src="/image/lol-logo.jpg" alt="" width="30" height="24">
+            <button class="btn border-0 text-white" id="themeToggleBtn" onclick="toggleTheme()">
+                DARK
+            </button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#">뉴스</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">챔피언</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">다운로드</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">로그인</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://www.leagueoflegends.com/ko-kr/" target ="_blank">외부사이트</a></li>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">리그홈</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">뉴스</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">챔피언</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/main_page_sub/download.html">다운로드</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">로그인</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            외부웹사이트
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="https://www.leagueoflegends.com/ko-kr/" target="_blank">롤공식홈</a></li>
+                            <li><a class="dropdown-item" href="https://lol.ps/" target="_blank">롤전적</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="https://www.youtube.com/@LeagueofLegends-Korea" target="_blank">관련유튜브</a></li>
+                        </ul>
+                    </li>
                 </ul>
+                <form class="d-flex" id="searchForm">
+                    <input class="form-control me-2" type="search" placeholder="챔피언, 뉴스 검색..." aria-label="Search" id="searchInput">
+                    <button class="btn btn-outline-success" type="submit">검색하기</button>
+                </form>
             </div>
         </div>
-    </nav> -->
+    </nav>
 
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <img src="/images/LOL.webp" alt="" width="30" height="24">
-<!-- [변경] "Navbar" 텍스트 → 다크/라이트 토글 버튼 -->
-<button class="btn border-0" id="themeToggleBtn" onclick="toggleTheme()">
-DARK
-</button>
-    <!-- <a class="navbar-brand" href="#">NAVIVAR</a> -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">리그홈</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">뉴스</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">챔피언</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="main_page_sub/download.html">다운로드</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/login">로그인</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            외부웹사이트
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="https://www.leagueoflegends.com/ko-kr/" target ="_blank">롤공식홈</a></li>
-            <li><a class="dropdown-item" href="https://lol.ps/" target ="_blank">롤전적</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="https://www.youtube.com/@LeagueofLegends-Korea" target = "_blank">관련유튜브</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
-      <form class="d-flex" id="searchForm">
-        <input class="form-control me-2" type="search" placeholder="챔피언, 뉴스 검색..." aria-label="Search" id="searchInput">
-        <button class="btn btn-outline-success" type="submit">검색하기</button>
-    </form>
+    <div class="modal fade" id="confirmModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-white border-secondary">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title">가입 확인</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>아래 정보로 가입하시겠습니까?</p>
+                    <table class="table table-dark table-bordered">
+                        <tr>
+                            <th>아이디</th>
+                            <td id="confirmUsername"></td>
+                        </tr>
+                        <tr>
+                            <th>이메일</th>
+                            <td id="confirmEmail"></td>
+                        </tr>
+                        <tr>
+                            <th>연락처</th>
+                            <td id="confirmPhone"></td>
+                        </tr>
+                        <tr>
+                            <th>패스워드</th>
+                            <td>******** (암호화 전송)</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer border-secondary">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                    <button type="button" class="btn btn-primary" onclick="submitRegister()">가입하기</button>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</nav>
 
+    <section class="hero d-flex align-items-center justify-content-center text-center py-5">
+        <div class="container" style="max-width: 400px;">
+            <h2 class="fw-bold mb-4">가입 완료!</h2>
+            <p class="lead mb-4">
+                환영합니다!<br>
+                가입이 완료되었습니다.<br>
+                로그인 후 서비스를 이용해보세요.
+            </p>
+            <a href="/login" class="btn btn-primary w-100">
+                로그인 하러 가기
+            </a>
+        </div>
+    </section>
 
-<!-- 가입 확인 모달 (</section> 아래, </body> 위) -->
-<div class="modal fade" id="confirmModal" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content bg-dark text-white border-secondary">
+    <script src="/js/search.js"></script>
+    <script src="/js/input_check.js"></script>
+    <script src="/js/input_sha256.js"></script>
+    <script src="/js/test.js"></script>
 
-      <div class="modal-header border-secondary">
-        <h5 class="modal-title"> 가입 확인</h5>
-        <button type="button" class="btn-close btn-close-white"
-              data-bs-dismiss="modal"></button>
-      </div>
-
-      <div class="modal-body">
-        <p>아래 정보로 가입하시겠습니까?</p>
-        <table class="table table-dark table-bordered">
-          <tr><th>아이디</th>
-              <td id="confirmUsername"></td></tr>
-          <tr><th>이메일</th>
-              <td id="confirmEmail"></td></tr>
-
-<tr><th>연락처</th>
-              <td id="confirmPhone"></td></tr>
-          <tr><th>패스워드</th>
-              <td>******** (암호화 전송)</td></tr>
-        </table>
-      </div>
-
-      <div class="modal-footer border-secondary">
-        <button type="button" class="btn btn-secondary"
-              data-bs-dismiss="modal">취소</button>
-        <button type="button" class="btn btn-primary"
-              onclick="submitRegister()">가입하기</button>
-      </div>
-
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index:9999">
+        <div id="liveToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body" id="toastBody"></div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
-<section class="hero d-flex align-items-center
-justify-content-center text-center py-5">
-<div class="container" style="max-width: 400px;">
-<h2 class="fw-bold mb-4"> 가입 완료!</h2>
-<p class="lead mb-4">
-환영합니다!<br>
-가입이 완료되었습니다.<br>
-로그인 후 서비스를 이용해보세요.
-</p>
-<a href="/login" class="btn btn-primary w-100">
-로그인 하러 가기
-</a>
-</div>
-</section>
 
-    <script src="js/search.js"></script>
-    <script src="js/input_check.js"></script>
-    <script src="js/input_sha256.js"></script>
-
-</section>
 </body>
 </html>

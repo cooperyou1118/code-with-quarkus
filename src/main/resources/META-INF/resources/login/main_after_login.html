@@ -4,47 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>League of Legends - 메인 페이지</title>
-    <!-- Bootstrap 5 CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/main.css">
-    <script src="../js/bootstrap.bundle.min.js"></script>
-    <script src="../js/test2.js"></script>
-    <script src="../js/test.js"></script>
-    <script src="../js/toggle.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="../css/download_home.css">
 
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> 
+    <script src="/js/toggle.js"></script>
+
     <script>
         window.onload = function() {
-            alert("메인 페이지 로딩 완료");
-        }
+            showToast("즐거운 플레이 되세요!");
+        }       
     </script>
 
+    <style>
+        body { background-color: #0a0e17; color: #fff; font-family: 'Arial', sans-serif; }
+        .navbar { background-color: #000; }
+        .hero { background: linear-gradient(to bottom, #1e1e1e, #0a0e17); min-height: 60vh; }
+        .accent-purple { color: #a020f0; }
+        .accent-red { color: #ff0000; }
+        .card { background-color: #1e1e1e; border: none; transition: transform 0.3s, box-shadow 0.3s; }
+        .card:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(160, 32, 240, 0.5); }
+        .card-img-top { height: 200px; object-fit: cover; border-radius: 10px 10px 0 0; }
+        .btn-primary { background-color: #a020f0; border: none; }
+        .btn-primary:hover { background-color: #800080; }
+    </style>
+
 </head>
+<link rel="stylesheet" href="../css/download_home.css">
 <body>
-
-    <!-- 헤더 (Navbar) -->
-    <!-- <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">리그 오브 레전드</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#">뉴스</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">챔피언</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">다운로드</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">로그인</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://www.leagueoflegends.com/ko-kr/" target ="_blank">외부사이트</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav> -->
-
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <img src="/images/LOL.webp" alt="" width="30" height="24">
+    <img src="/image/lol-logo.jpg" alt="" width="30" height="24">
 <!-- [변경] "Navbar" 텍스트 → 다크/라이트 토글 버튼 -->
 <button class="btn border-0" id="themeToggleBtn" onclick="toggleTheme()">
 DARK
@@ -54,7 +46,7 @@ DARK
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">리그홈</a>
         </li>
@@ -72,7 +64,7 @@ DARK
           <a class="nav-link" href="/profile"
             id="profileNavLink"
             data-bs-toggle="tooltip"
-            data-bs-placement="bottom"> 프로필</a>
+            data-bs-placement="bottom"> 👤프로필</a>
         </li>
 
         <!-- 기존 로그인 버튼 제거, 로그아웃 버튼 추가 -->
@@ -90,9 +82,6 @@ DARK
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="https://www.youtube.com/@LeagueofLegends-Korea" target = "_blank">관련유튜브</a></li>
           </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </li>
       </ul>
       <form class="d-flex" id="searchForm">
@@ -116,129 +105,124 @@ DARK
         <h2 class="text-center mb-4 accent-purple">챔피언 선택</h2>
         <p class="text-center mb-5">전투에 뛰어들기, 팀 지원, 또는 그 중간? 당신의 스타일을 선택하세요.</p>
         <div class="row g-4">
-        <div class="row row-cols-auto g-4"> 
-            <!-- Aatrox -->
-            <!-- <div class="col-md-6 col-lg-4 col-xl-2">
-                <div class="card text-center h-100">
-                    <img src="https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Aatrox.png" class="card-img-top" alt="Aatrox" loading="lazy">
+            
+            <div class="col-md-6 col-lg-4 col-xl-2">
+                <div class="card bg-dark text-white border-secondary h-100">
+                    <img src="https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Aatrox.png" class="card-img-top" alt="아트록스">
                     <div class="card-body">
-                        <h5 class="card-title accent-red">Aatrox (탑)</h5>
-                        <p class="card-text">어둠의 검으로 적을 베세요.</p>
+                        <h5 class="card-title accent-red">아트록스 (탑)</h5>
+                        <p class="card-text small">역할: 전사 / 난이도: 상</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <button class="btn btn-outline-light w-100" data-bs-toggle="modal" data-bs-target="#championModal" data-url="./modals/Aatrox.html">상세보기</button>
                     </div>
                 </div>
-            </div> -->
+            </div>
 
-             <!-- <div class="col">
-<div class="card bg-dark text-white border-secondary h-100">
-    <img src="https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Aatrox.png" class="card-img-top" alt="아트록스">
-    <div class="card-body">
-    <h5 class="card-title">아트록스 (Aatrox)</h5>
-    <p class="card-text small">역할: 전사 / 난이도: 상</p>
-        </div>
-            <div class="card-footer bg-transparent border-0">
-                <button class="btn btn-outline-light w-100"
-                    data-bs-toggle="modal"
-                    data-bs-target="#modalAatrox"
-                    data-champ="Aatrox">
-                    상세 보기
-                </button>
+            <div class="col-md-6 col-lg-4 col-xl-2">
+                <div class="card bg-dark text-white border-secondary h-100">
+                    <img src="https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Sylas.png" class="card-img-top" alt="사일러스" loading="lazy">
+                    <div class="card-body">
+                        <h5 class="card-title accent-purple">사일러스 (정글/미드)</h5>
+                        <p class="card-text small">궁극기를 훔치세요!</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <button class="btn btn-outline-light w-100" data-bs-toggle="modal" data-bs-target="#championModal" data-url="./modals/Sylas.html">상세보기</button>
+                    </div>
+                </div>
             </div>
-        </div>
-</div>  -->
 
-<div class="col">
-<div class="card bg-dark text-white border-secondary h-100">
-    <img src="https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Aatrox.png" class="card-img-top" alt="아트록스">
-    <div class="card-body">
-<h5 class="card-title">아트록스 (Aatrox)</h5>
-<p class="card-text small">역할: 전사 / 난이도: 상</p>
-    </div>
-    <div class="card-footer bg-transparent border-0">
-<button class="btn btn-outline-light w-100"
-data-bs-toggle="modal"
-data-bs-target="#modalAatrox"
-data-champ="Aatrox">
-상세 보기
-</button>
-</div>
-</div>
-</div>
+            <div class="col-md-6 col-lg-4 col-xl-2">
+                <div class="card bg-dark text-white border-secondary h-100">
+                    <img src="https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Anivia.png" class="card-img-top" alt="애니비아" loading="lazy">
+                    <div class="card-body">
+                        <h5 class="card-title accent-red">애니비아 (미드)</h5>
+                        <p class="card-text small">얼음으로 적을 봉인하세요.</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <button class="btn btn-outline-light w-100" data-bs-toggle="modal" data-bs-target="#championModal" data-url="./modals/Anivia.html">상세보기</button>
+                    </div>
+                </div>
+            </div>
 
-<!-- 모달 (iframe으로 Aatrox.html 불러오기) -->
-<div class="modal fade" id="modalAatrox" tabindex="-1" aria-labelledby="modalAatroxLabel" aria-hidden="true">
-<div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-<div class="modal-content bg-dark text-white border-secondary">
-<!-- 헤더 -->
-<div class="modal-header border-secondary">
-<h5 class="modal-title" id="modalAatroxLabel">아트록스 (Aatrox) 상세 정보</h5>
-<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-</div>
-<!-- 바디: iframe으로 내용 채움 -->
-<div class="modal-body p-0" style="height: 65vh; background: #0a0e17;">
-<iframe
-src="modals/Aatrox.html"
-frameborder="0"
-style="width: 100%; height: 100%; border: none;"
-allowfullscreen>
-</iframe>
-</div>
-<!-- 푸터 -->
-<div class="modal-footer border-secondary">
-<button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">닫기</button>
-</div>
-</div>
-</div>
-</div>
-            <!-- Sylas -->
             <div class="col-md-6 col-lg-4 col-xl-2">
-                <div class="card text-center h-100">
-                    <img src="https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Sylas.png" class="card-img-top" alt="Sylas" loading="lazy">
+                <div class="card bg-dark text-white border-secondary h-100">
+                    <img src="https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Briar.png" class="card-img-top" alt="브라이어" loading="lazy">
                     <div class="card-body">
-                        <h5 class="card-title accent-purple">Sylas (정글/미드)</h5>
-                        <p class="card-text">궁극기를 훔치세요!</p>
+                        <h5 class="card-title accent-purple">브라이어 (정글)</h5>
+                        <p class="card-text small">광폭한 힘으로 돌진!</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <button class="btn btn-outline-light w-100" data-bs-toggle="modal" data-bs-target="#championModal" data-url="./modals/Briar.html">상세보기</button>
                     </div>
                 </div>
             </div>
-            <!-- Anivia -->
+
             <div class="col-md-6 col-lg-4 col-xl-2">
-                <div class="card text-center h-100">
-                    <img src="image/yasuo.jpg" class="card-img-top" alt="Anivia" loading="lazy">
+                <div class="card bg-dark text-white border-secondary h-100">
+                    <img src="https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Jax.png" class="card-img-top" alt="잭스" loading="lazy">
                     <div class="card-body">
-                        <h5 class="card-title accent-red">Yasuo (미드)</h5>
-                        <p class="card-text">바람으로 적을 날려버리세요.</p>
+                        <h5 class="card-title accent-red">잭스 (탑)</h5>
+                        <p class="card-text small">대장간의 주인!</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <button class="btn btn-outline-light w-100" data-bs-toggle="modal" data-bs-target="#championModal" data-url="./modals/Jax.html">상세보기</button>
                     </div>
                 </div>
             </div>
-            <!-- Briar -->
+
             <div class="col-md-6 col-lg-4 col-xl-2">
-                <div class="card text-center h-100">
-                    <img src="https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Briar.png" class="card-img-top" alt="Briar" loading="lazy">
+                <div class="card bg-dark text-white border-secondary h-100">
+                    <img src="https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Jinx.png" class="card-img-top" alt="징크스" loading="lazy">
                     <div class="card-body">
-                        <h5 class="card-title accent-purple">Briar (정글)</h5>
-                        <p class="card-text">광폭한 힘으로 돌진!</p>
+                        <h5 class="card-title accent-purple">징크스 (원딜)</h5>
+                        <p class="card-text small">폭발로 적을 날려버리세요.</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <button class="btn btn-outline-light w-100" data-bs-toggle="modal" data-bs-target="#championModal" data-url="./modals/Jinx.html">상세보기</button>
                     </div>
                 </div>
             </div>
-            <!-- Jax -->
+
             <div class="col-md-6 col-lg-4 col-xl-2">
-                <div class="card text-center h-100">
-                    <img src="https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Jax.png" class="card-img-top" alt="Jax" loading="lazy">
+                <div class="card bg-dark text-white border-secondary h-100">
+                    <img src="/image/유나라.jpg" onerror="this.src='/images/LOL.png'" class="card-img-top" alt="유나라" loading="lazy">
                     <div class="card-body">
-                        <h5 class="card-title accent-red">Jax (탑)</h5>
-                        <p class="card-text">대장간의 주인!</p>
+                        <h5 class="card-title accent-red">유나라 (전사)</h5>
+                        <p class="card-text small">전장의 새로운 지배자!</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <button class="btn btn-outline-light w-100" data-bs-toggle="modal" data-bs-target="#championModal" data-url="./modals/Yunara.html">상세보기</button>
                     </div>
                 </div>
             </div>
-            <!-- Jinx -->
+
             <div class="col-md-6 col-lg-4 col-xl-2">
-                <div class="card text-center h-100">
-                    <img src="https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Jinx.png" class="card-img-top" alt="Jinx" loading="lazy">
+                <div class="card bg-dark text-white border-secondary h-100">
+                    <img src="/image/자헨.jpg" onerror="this.src='/images/LOL.png'" class="card-img-top" alt="자헨" loading="lazy">
                     <div class="card-body">
-                        <h5 class="card-title accent-purple">Jinx (원딜)</h5>
-                        <p class="card-text">폭발로 적을 날려버리세요.</p>
+                        <h5 class="card-title accent-purple">자헨 (암살자)</h5>
+                        <p class="card-text small">어둠 속에서 덮쳐오는 칼날.</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <button class="btn btn-outline-light w-100" data-bs-toggle="modal" data-bs-target="#championModal" data-url="./modals/Jahen.html">상세보기</button>
                     </div>
                 </div>
             </div>
+
+            <div class="col-md-6 col-lg-4 col-xl-2">
+                <div class="card bg-dark text-white border-secondary h-100">
+                    <img src="/image/멜.jpg" onerror="this.src='/images/LOL.png'" class="card-img-top" alt="멜" loading="lazy">
+                    <div class="card-body">
+                        <h5 class="card-title accent-red">멜 (마법사/서포터)</h5>
+                        <p class="card-text small">전략과 마법으로 판을 뒤집으세요.</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <button class="btn btn-outline-light w-100" data-bs-toggle="modal" data-bs-target="#championModal" data-url="./modals/Mel.html">상세보기</button>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -307,6 +291,45 @@ allowfullscreen>
 
     <script src="js/search.js"></script>
     <script src="js/profile.js"></script>
+    <script src="js/test.js"></script>
+    <script src="/js/test2.js"></script> 
     
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index:9999">
+    <div id="liveToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body" id="toastBody"></div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="championModal" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" id="modalContent">
+        </div>
+  </div>
+</div>
+
+<script>
+// ID를 변경한 공용 모달을 선택합니다.
+const modal = document.getElementById('championModal');
+
+modal.addEventListener('show.bs.modal', function (event) {
+    const button = event.relatedTarget;
+    const url = button.getAttribute('data-url'); // 각 버튼의 data-url을 가져옴
+
+    fetch(url)
+        .then(res => {
+            if (!res.ok) throw new Error("데이터를 불러오지 못했습니다.");
+            return res.text();
+        })
+        .then(data => {
+            document.getElementById("modalContent").innerHTML = data;
+        })
+        .catch(err => {
+            console.error(err);
+            document.getElementById("modalContent").innerHTML = "<div class='p-4 text-center'>상세 정보를 준비 중입니다.</div>";
+        });
+});
+</script>
 </body>
 </html>
